@@ -35,5 +35,30 @@ const loginUser = async (req, res) => {
     }
 };
 
-module.exports = {registerUser, loginUser}
+const logoutUser= async(req, res)=>{
+    const token=req.headers.authorization?.split(" ")[1];
+    if(!token){
+        return res.status(400).json({message: "Token is required for logout."});
+    }
+
+    const decoded=jwt.decode(token);
+    if(!decoded || !decoded.exp){
+        return res.status(400).json({message: "Invalid token."});
+    }
+
+    const expiresAt=new Date(decoded.exp * 1000);
+    await blacklistModel.create({token, expiresAt});
+    res.status(200).json({message: "Logout successful. Token has been invalidated."});
+}
+
+const getUsers=async(req, res)=>{
+    try {
+        const users=await userModel.find();
+        res.status(200).json({users: users})
+    } catch (error) {
+        res.status(500).json({message: "Server error"})
+    }
+}
+
+module.exports = {registerUser, loginUser, logoutUser, getUsers}
 

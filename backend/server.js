@@ -2,6 +2,10 @@ const express = require("express");
 const cors = require("cors");
 const connectDB = require("./config/db");
 const userRouter = require("./routes/user.route");
+const productRouter = require("./routes/product.route");
+const orderRouter = require("./routes/order.route");
+const reviewRouter = require("./routes/review.route");
+const chatRouter = require("./routes/chat.route");
 
 const app = express();
 app.use(express.json());
@@ -13,7 +17,11 @@ app.get('/', (req, res)=>{
 })
 
 // user route
-app.use('/user', userRouter);
+app.use('/users', userRouter);
+app.use('/products', productRouter);
+app.use('/orders', orderRouter);
+app.use('/reviews', reviewRouter);
+app.use('/chats', chatRouter)
 
 app.listen(PORT, async() => {
     try {
