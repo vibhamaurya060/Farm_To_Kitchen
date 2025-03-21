@@ -1,68 +1,67 @@
-import React, { useEffect, useState } from "react";
-import { data, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../styles/Login.css";
 import { useAuth } from "../Context/AuthContext";
 import Navbar from "../components/Navbar";
-
 
 const Login = () => {
   const navigate = useNavigate();
   const { login } = useAuth(); // Use the login function from AuthContext
   const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
-  const [loginData, setLoginData] = useState([]);
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
-
-
-  useEffect(() => {
-    async function fetchData() {
-      const response = await axios.get("http://localhost:8080/users");
-      const data = await response.data;
-      setLoginData(data)
-
-
-    }
-    fetchData()
-  }, [])
-  // console.log(loginData)
-
+  
   const handleLogin = async () => {
     setError("");
-    // Check if a user matches the provided credentials
-    const user = loginData.find(
-      (u) => u.email === form.email && u.password === form.password
-    );
-
-    if (user) {
-      // Log in the user
-      login(user);
-
-      alert(`Login successful!`);
-      navigate("/");
-    } else {
-      setError("Invalid email or password! Please try again.");
+    
+    // Basic validation
+    if (!form.email || !form.password) {
+      setError("Please enter both email and password.");
+      return;
     }
-
+    
+    try {
+      // Send login request directly to the backend
+      const response = await axios.post("http://localhost:8080/users/login", form);
+      
+      // If we got here, login was successful
+      const userData = response.data;
+      
+      // Call the login function from AuthContext with the user data
+      login(userData);
+      
+      alert("Login successful!");
+      navigate("/");
+    } catch (error) {
+      console.error("Login error:", error);
+      
+      // Check if there's a specific error message from the server
+      if (error.response && error.response.data && error.response.data.message) {
+        setError(error.response.data.message);
+      } else {
+        setError("Invalid email or password! Please try again.");
+      }
+    }
   };
 
   return (
     <>
-      <Navbar />
-      <div className="flex items-center justify-center h-screen bg-gray-100 ">
-        <div className="p-6 w-96 login shadow-lg rounded-lg">
-          <h1 className="text-2xl font-bold text-center mb-4">Log in</h1>
-          {error && <p className="text-red-500 text-sm text-center mb-4">{error}</p>}
+      <div className="auth-container">
+        <div className="auth-form">
+          <h1 className="auth-heading">Log in</h1>
+          {error && <p className={`error-message ${error ? 'visible' : ''}`}>{error}</p>}
           <input
             type="email"
             name="email"
             value={form.email}
             onChange={handleInputChange}
             placeholder="Email"
-            className="w-full p-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500"
+            className="form-input"
           />
           <input
             type="password"
@@ -70,17 +69,17 @@ const Login = () => {
             value={form.password}
             onChange={handleInputChange}
             placeholder="Password"
-            className="w-full p-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500"
+            className="form-input"
           />
           <button
             onClick={handleLogin}
-            className="bg-violet-400 hover:bg-violet-600 text-white w-full py-2 rounded-lg"
+            className="auth-button"
           >
             Log in
           </button>
-          <p className="mt-4 text-center">
+          <p className="auth-link-container">
             Don't have an account?{" "}
-            <a href="/signup" className="text-violet-600 hover:underline">
+            <a href="/signup" className="auth-link">
               Sign Up here
             </a>
           </p>

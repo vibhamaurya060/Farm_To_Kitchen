@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { FiUser, FiMenu, FiX } from "react-icons/fi"; 
-import "../styles/Navbar.css";
+import { FiUser, FiMenu, FiX, FiShoppingCart, FiPhone } from "react-icons/fi"; 
+import { IoMdArrowDropdown } from "react-icons/io";
 import { useAuth } from "../Context/AuthContext";
-import logo from '../assets/FarmNet_logo.png'
-
+import logo from '../assets/FarmNet_logo.png';
+import "../styles/Navbar.css";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
- 
+  const [showCategories, setShowCategories] = useState(false);
 
   const handleLogout = () => {
     logout();
@@ -20,61 +20,53 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="nav">
-      <div className="flex justify-between items-center max-w-8xl px-16 py-3">
-        {/* Logo */}
+    <nav className="navbar">
+      <div className="navbar-container">
         <img
           onClick={() => navigate("/")}
           src={logo}
           alt="Logo"
-          className="w-12 h-12 rounded-full cursor-pointer"
+          className="logo"
         />
-       
-   
 
-        {/* Desktop Links */}
-        <div className="hidden md:flex space-x-8">
-          <NavLink
-            to="/"
-            className="bg-black hover:bg-white text-white hover:text-black font-bold text-lg"
-            style={{
-              border: "1px solid teal",
-              padding: "5px 15px",
-              borderRadius: "50px",
-            }}
-          >
-            Home
-          </NavLink>
-          {/* <NavLink
-            to="/propertylisting"
-            className="bg-black hover:bg-white text-white hover:text-black font-bold text-lg"
-            style={{
-              border: "1px solid teal",
-              padding: "5px 15px",
-              borderRadius: "50px",
-            }}
-          >
-            Property
-          </NavLink> */}
+        <div className="nav-links">
+          <NavLink to="/" className="nav-item">Home</NavLink>
+          <NavLink to="/products" className="nav-item">Products</NavLink>
+          <div className="dropdown">
+            <button 
+              className="dropdown-button"
+              onClick={() => setShowCategories(!showCategories)}
+            >
+              Categories <IoMdArrowDropdown className="icon"/>
+            </button>
+            {showCategories && (
+              <div className="dropdown-menu">
+                <NavLink to="/fruits" className="dropdown-item">Fruits</NavLink>
+                <NavLink to="/vegetables" className="dropdown-item">Vegetables</NavLink>
+                <NavLink to="/dairy" className="dropdown-item">Dairy Products</NavLink>
+                <NavLink to="/grains" className="dropdown-item">Grains</NavLink>
+              </div>
+            )}
+          </div>
+          <NavLink to="/contact" className="nav-item">Contact</NavLink>
+          <NavLink to="/cart" className="nav-item"><FiShoppingCart className="icon" style={{width:"22px", fontWeight:"bold"}}/> Cart</NavLink>
+
           {user ? (
-            <div className="relative" >
+            <div className="profile-menu">
               <button
                 onClick={() => setShowProfileMenu(!showProfileMenu)}
-                className="bg-black hover:bg-white text-white hover:text-black font-bold flex items-center space-x-2"
-                style={{
-                  border: "1px solid teal",
-                  padding: "5px 15px",
-                  borderRadius: "50px",
-                }}
+                className="profile-button"
               >
-                <FiUser className="w-6 h-6 rounded-3xl border-2 border-white hover:border-2 hover:border-black" />
-                <span>{user.username}</span>
+                <FiUser className="icon" />
+                {user.username}
+                <IoMdArrowDropdown className="icon"/>
               </button>
               {showProfileMenu && (
-                <div className="absolute right-0 mt-2 w-30  bg-white border rounded-lg shadow-lg z-10">
-                  <button
-                    onClick={handleLogout}
-                    className="block w-full text-left px-4 py-2 text-md hover:bg-gray-100 text-black rounded-lg"
+                <div className="profile-dropdown">
+                  <NavLink to="/profile" className="profile-item">Profile</NavLink>
+                  <button 
+                    onClick={handleLogout} 
+                    className="profile-item logout-button"
                   >
                     Logout
                   </button>
@@ -82,88 +74,45 @@ const Navbar = () => {
               )}
             </div>
           ) : (
-            <NavLink
-              to="/login"
-              className="bg-black hover:bg-white text-white hover:text-black font-bold flex items-center space-x-2"
-              style={{
-                border: "1px solid teal",
-                padding: "5px 15px",
-                borderRadius: "50px",
-                marginRight:"10px"
-              }}
+            <NavLink 
+              to="/login" 
+              className="login-button"
             >
               Log in
             </NavLink>
           )}
         </div>
 
-        {/* Mobile Menu Button */}
         <button
           onClick={() => setShowMobileMenu(!showMobileMenu)}
-          className="md:hidden text-black text-2xl focus:outline-none"
+          className="mobile-menu-button"
         >
           {showMobileMenu ? <FiX /> : <FiMenu />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {showMobileMenu && (
-        <div className="md:hidden fixed top-16 right-4 bg-white shadow-lg rounded-lg w-40 py-4 z-50">
-          <div className="flex flex-col items-center space-y-3">
-            <NavLink
-              to="/"
-              className="bg-black hover:bg-white text-white hover:text-black font-bold text-sm w-2/3 text-center"
-              style={{
-                border: "1px solid teal",
-                paddingTop: "5px",
-                paddingBottom:"6px",
-                borderRadius: "50px",
-              }}
-              onClick={() => setShowMobileMenu(false)}
-            >
-              Home
-            </NavLink>
-            {/*   */}
-            {user ? (
-            <div className="relative" >
-              <button
-                onClick={() => setShowProfileMenu(!showProfileMenu)}
-                className="bg-black hover:bg-white text-white hover:text-black font-bold flex items-center space-x-2"
-                style={{
-                  border: "1px solid teal",
-                  padding: "4px 20px",
-                  borderRadius: "50px",
-                }}
-              >
-                <FiUser className="w-6 h-6 rounded-3xl border-2 border-white hover:border-2 hover:border-black" />
-                <span>{user.username}</span>
-              </button>
-              {showProfileMenu && (
-                <div className="absolute left-0 mt-2 w-20 bg-white border rounded-lg shadow-lg z-10">
-                  <button
-                    onClick={handleLogout}
-                    className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 text-black"
-                  > 
-                    Logout
-                  </button>
-                </div>
-              )}
+        <div className="mobile-menu">
+          <NavLink to="/" className="mobile-item" onClick={() => setShowMobileMenu(false)}>Home</NavLink>
+          <NavLink to="/products" className="mobile-item" onClick={() => setShowMobileMenu(false)}>Products</NavLink>
+          <button className="mobile-item" onClick={() => setShowCategories(!showCategories)}>
+            Categories <IoMdArrowDropdown className="icon"/>
+          </button>
+          {showCategories && (
+            <div className="mobile-dropdown">
+              <NavLink to="/fruits" className="mobile-dropdown-item" onClick={() => setShowMobileMenu(false)}>Fruits</NavLink>
+              <NavLink to="/vegetables" className="mobile-dropdown-item" onClick={() => setShowMobileMenu(false)}>Vegetables</NavLink>
+              <NavLink to="/dairy" className="mobile-dropdown-item" onClick={() => setShowMobileMenu(false)}>Dairy</NavLink>
+              <NavLink to="/grains" className="mobile-dropdown-item" onClick={() => setShowMobileMenu(false)}>Grains</NavLink>
             </div>
-          ) : (
-            <NavLink
-              to="/login"
-              className="bg-black hover:bg-white text-white hover:text-black font-bold text-sm w-2/3 text-center"
-              style={{
-                border: "1px solid teal",
-                paddingTop:"5px",
-                paddingBottom:"8px",
-                borderRadius: "50px",
-              }}
-            >
-              Log in
-            </NavLink>
           )}
-          </div>
+          <NavLink to="/contact" className="mobile-item" onClick={() => setShowMobileMenu(false)}>Contact</NavLink>
+          <NavLink to="/cart" className="mobile-item" onClick={() => setShowMobileMenu(false)}>Cart</NavLink>
+          {user ? (
+            <button onClick={handleLogout} className="mobile-logout-button">Logout</button>
+          ) : (
+            <NavLink to="/login" className="mobile-login-button">Log in</NavLink>
+          )}
         </div>
       )}
     </nav>
