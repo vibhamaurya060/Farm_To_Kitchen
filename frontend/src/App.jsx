@@ -11,6 +11,7 @@ import CheckoutPage from './Pages/CheckoutPage'
 import SuccessPage from './Pages/SuccessPage'
 import ProductDetail from './Pages/ProductDetail'
 import NotFound from './Pages/NotFound'
+import CategoryPage from './Pages/CategoryPage'
 
 
 
@@ -27,6 +28,7 @@ function App() {
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/success" element={<SuccessPage />} />
         <Route path="/products/:id" element={<ProductDetail />} />
+        <Route path="/products/:category" element={<CategoryPage />} />
         <Route path="*" element={<NotFound />} /> 
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />

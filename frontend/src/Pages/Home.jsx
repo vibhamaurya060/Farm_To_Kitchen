@@ -197,10 +197,10 @@ const Home = () => {
                     {/* Text Content */}
                     <div className="about-text">
                         <p>
-                            <strong>FarmNet</strong> is dedicated to connecting farmers with fresh, organic <br />
-                            produce buyers, ensuring a sustainable and eco-friendly <br />
-                            farming experience. Our platform bridges the gap between <br />
-                            rural farms and urban consumers, making healthy food  <br />
+                            <strong style={{fontSize:"25px"}}>FarmNet</strong> is dedicated to connecting farmers with fresh, <br /> organic 
+                            produce buyers, ensuring a sustainable and <br /> eco-friendly 
+                            farming experience. Our platform bridges the gap between 
+                            rural farms and urban consumers, making healthy food  
                             accessible to everyone.
                         </p>
                     </div>

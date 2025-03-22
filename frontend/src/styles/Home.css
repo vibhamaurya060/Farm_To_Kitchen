@@ -591,8 +591,8 @@
     gap: 3rem;
     padding: 2rem;
     border-radius: var(--border-radius);
-    background-color: white;
-    box-shadow: var(--shadow-md);
+    /* background-color: white; */
+    /* box-shadow: var(--shadow-md); */
   }
   
   @media (min-width: 768px) {
