@@ -2,7 +2,7 @@
 import { Route, Routes } from 'react-router'
 import './App.css'
 import Signup from './Pages/Signup'
-import Login from './pages/Login.jsx'
+
 import Home from './Pages/Home'
 import Navbar from './components/Navbar'
 import Products from './Pages/Products'
@@ -11,6 +11,7 @@ import CheckoutPage from './Pages/CheckoutPage'
 import ProductDetail from './Pages/ProductDetail'
 import NotFound from './Pages/NotFound'
 import CategoryPage from './Pages/CategoryPage'
+import Login from './Pages/Login.jsx'
 
 
 
