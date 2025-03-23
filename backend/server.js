@@ -6,7 +6,6 @@ const productRouter = require("./routes/product.route");
 const orderRouter = require("./routes/order.route");
 const reviewRouter = require("./routes/review.route");
 const chatRouter = require("./routes/chat.route");
-const stripe = require("stripe")(process.env.PAY_SECRET);
 
 const app = express();
 app.use(express.json());
@@ -15,7 +14,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(
     cors({
-        origin: "http://localhost:5174",
+        origin: process.env.FRONTEND_URL,
         methods: ["GET", "POST", "PUT", "DELETE"],
         credentials: true,
     })
