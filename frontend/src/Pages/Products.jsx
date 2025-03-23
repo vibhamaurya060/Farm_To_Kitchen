@@ -22,7 +22,7 @@ const Products = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch("http://localhost:8080/products");
+                const response = await fetch("https://farm-to-kitchen.onrender.com/products");
                 if (!response.ok) throw new Error("Failed to fetch products");
 
                 const data = await response.json();

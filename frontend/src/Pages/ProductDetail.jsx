@@ -15,7 +15,7 @@ const ProductDetail = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/products/${id}`);
+        const response = await axios.get(`https://farm-to-kitchen.onrender.com/products/${id}`);
         setProduct(response.data);
         setMainImage(response.data.images?.[0] || '');
       } catch (err) {

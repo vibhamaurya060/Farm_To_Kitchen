@@ -33,7 +33,7 @@ const Home = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch("http://localhost:8080/products");
+                const response = await fetch("https://farm-to-kitchen.onrender.com/products");
                 const data = await response.json();
                 setProducts(data.products);
             } catch (error) {

@@ -30,7 +30,7 @@ const Signup = () => {
     
     try {
       // Using the correct endpoint for user registration
-      await axios.post("http://localhost:8080/users/register", form);
+      await axios.post("https://farm-to-kitchen.onrender.com/users/register", form);
       
       alert("Signup successful! You can now log in.");
       navigate("/login");
