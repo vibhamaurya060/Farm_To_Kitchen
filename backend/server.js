@@ -13,6 +13,14 @@ app.use(express.json());
 app.use(cors());
 const PORT = process.env.PORT || 3000;
 
+app.use(
+    cors({
+        origin: "http://localhost:5174",
+        methods: ["GET", "POST", "PUT", "DELETE"],
+        credentials: true,
+    })
+);
+
 app.get('/', (req, res)=>{
     res.send("API is working.")
 })
