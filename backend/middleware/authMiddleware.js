@@ -1,5 +1,6 @@
 const jwt=require("jsonwebtoken");
-const blacklistModel = require("../models/blacklist.model");
+const { blacklistModel } = require("../models/user.model");
+
 
 const authMiddleware= async(req, res, next)=>{
     const token=req.headers.authorization?.split(" ")[1];

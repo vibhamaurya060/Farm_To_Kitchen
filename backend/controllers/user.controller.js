@@ -1,7 +1,8 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const userModel = require("../models/user.model");
-const blacklistModel = require("../models/blacklist.model");
+
+
 
 const registerUser = async (req, res) => {
     try {
@@ -48,7 +49,7 @@ const logoutUser= async(req, res)=>{
     }
 
     const expiresAt=new Date(decoded.exp * 1000);
-    await blacklistModel.create({token, expiresAt});
+    await userModel.blacklistModel.create({token, expiresAt});
     res.status(200).json({message: "Logout successful. Token has been invalidated."});
 }
 
