@@ -21,7 +21,7 @@ app.use(
 ); 
 
 app.get('/', (req, res)=>{
-    res.send("API is working.")
+    res.send("API is working.") 
 })
 
 // user route
