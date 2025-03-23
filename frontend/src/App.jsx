@@ -8,7 +8,6 @@ import Navbar from './components/Navbar'
 import Products from './Pages/Products'
 import CartPage from './Pages/CartPage'
 import CheckoutPage from './Pages/CheckoutPage'
-import SuccessPage from './Pages/SuccessPage'
 import ProductDetail from './Pages/ProductDetail'
 import NotFound from './Pages/NotFound'
 import CategoryPage from './Pages/CategoryPage'
@@ -26,7 +25,6 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="/success" element={<SuccessPage />} />
         <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/products/:category" element={<CategoryPage />} />
         <Route path="*" element={<NotFound />} /> 

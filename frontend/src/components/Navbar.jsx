@@ -41,14 +41,14 @@ const Navbar = () => {
             </button>
             {showCategories && (
               <div className="dropdown-menu">
-                <NavLink to="/fruits" className="dropdown-item">Fruits</NavLink>
-                <NavLink to="/vegetables" className="dropdown-item">Vegetables</NavLink>
-                <NavLink to="/dairy" className="dropdown-item">Dairy Products</NavLink>
-                <NavLink to="/grains" className="dropdown-item">Grains</NavLink>
+                <NavLink to="/products" className="dropdown-item">Fruits</NavLink>
+                <NavLink to="/products" className="dropdown-item">Vegetables</NavLink>
+                <NavLink to="/products" className="dropdown-item">Dairy Products</NavLink>
+                <NavLink to="/products" className="dropdown-item">Grains</NavLink>
               </div>
             )}
           </div>
-          <NavLink to="/contact" className="nav-item">Contact</NavLink>
+          {/* <NavLink to="/contact" className="nav-item"></NavLink> */}
           <NavLink to="/cart" className="nav-item"><FiShoppingCart className="icon" style={{width:"22px", fontWeight:"bold"}}/> Cart</NavLink>
 
           {user ? (

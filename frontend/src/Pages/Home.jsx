@@ -78,7 +78,7 @@ const Home = () => {
                                 <div className="hero-overlay">
                                     <h1 className="hero-title">Welcome to Organic Farm Market</h1>
                                     <p className="hero-subtitle">Fresh, Organic & Locally Sourced Products</p>
-                                    <button className="shop-now-button">SHOP NOW</button>
+                                    <button className="shop-now-button"  onClick={() => navigate(`/products`)} >SHOP NOW</button>
                                 </div>
                             </div>
                         </SwiperSlide>
