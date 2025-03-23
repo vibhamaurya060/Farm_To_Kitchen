@@ -18,7 +18,7 @@ app.use(
         methods: ["GET", "POST", "PUT", "DELETE"],
         credentials: true,
     })
-);
+); 
 
 app.get('/', (req, res)=>{
     res.send("API is working.")
