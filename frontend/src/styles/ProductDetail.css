@@ -102,7 +102,7 @@
   }
   
   .buy-now-button {
-    background-color: #ff0000;
+    background-color: #ff8c00;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -113,6 +113,6 @@
   }
   
   .buy-now-button:hover {
-    background-color: rgb(230, 0, 0);
+    background-color: #df7c03;
   }
   
