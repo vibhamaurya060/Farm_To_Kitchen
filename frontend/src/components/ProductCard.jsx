@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Heart } from "lucide-react";
-import "../styles/ProductCard.css"; // Import external CSS
+import "../styles/ProductCard.css"; 
 import { useCart } from "../Context/CartContext";
 
 
@@ -15,10 +14,6 @@ const ProductCard = ({ product }) => {
 
   return (
     <div className="product-card">
-      {/* Wishlist Button */}
-      <button className="wishlist-button">
-        <Heart className="text-red-500 w-5 h-5" />
-      </button>
 
       {/* Product Image */}
       <div className="product-image-container">

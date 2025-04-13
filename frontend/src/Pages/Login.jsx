@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../styles/Login.css";
 import { useAuth } from "../Context/AuthContext";
@@ -79,9 +79,9 @@ const Login = () => {
           </button>
           <p className="auth-link-container">
             Don't have an account?{" "}
-            <a href="/signup" className="auth-link">
+            <Link to="/signup" className="auth-link">
               Sign Up here
-            </a>
+            </Link>
           </p>
         </div>
       </div>

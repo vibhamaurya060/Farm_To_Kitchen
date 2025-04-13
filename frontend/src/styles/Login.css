@@ -1,6 +1,4 @@
-/* Login.css */
 
-/* General styles */
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -69,7 +67,7 @@ body {
   
   /* Auth button */
   .auth-button {
-    background-color: #8b5cf6;
+    background-color: #8a5cf6;
     color: white;
     width: 100%;
     padding: 0.75rem;

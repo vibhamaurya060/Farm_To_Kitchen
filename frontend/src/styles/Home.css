@@ -1,8 +1,8 @@
-/* General Styles */
+
 :root {
-    --primary-color: #3b82f6;
-    --primary-hover: #2563eb;
-    --secondary-color: #10b981;
+    --primary-color: #953bf6;
+    --primary-hover: #8222e9;
+    --secondary-color: #1db8a6;
     --accent-color: #f59e0b;
     --text-dark: #1f2937;
     --text-light: #6b7280;
@@ -534,21 +534,21 @@
 }
 
 .view-details-button {
-    background-color: #3394fb;
+    background-color: #a871ff;
     color: white;
 }
 
 .view-details-button:hover {
-    background-color: #007bff;
+    background-color: #9f65fd;
 }
 
 .add-to-cart-button {
-    background-color: rgb(68, 176, 68);
+    background-color: #65a897;
     color: white;
 }
 
 .add-to-cart-button:hover {
-    background-color: rgb(50, 162, 50);
+    background-color: #58a18f;
 }
   
   /* About Section Styles */

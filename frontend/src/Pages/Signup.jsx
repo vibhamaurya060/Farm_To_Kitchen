@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../styles/Login.css";
-import Navbar from "../components/Navbar";
+
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -94,9 +94,9 @@ const Signup = () => {
           </button>
           <p className="auth-link-container">
             Already have an account?{" "}
-            <a href="/login" className="auth-link">
+            <Link to="/login" className="auth-link">
               Log in here
-            </a>
+            </Link>
           </p>
         </div>
       </div>
