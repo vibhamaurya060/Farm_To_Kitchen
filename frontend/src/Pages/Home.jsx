@@ -167,7 +167,7 @@ const Home = () => {
                                             className="view-details-button"
                                             onClick={() => navigate(`/products/${product._id}`)}
                                         >
-                                            View Details
+                                            View Details 
                                         </button>
                                         <button
                                             className="add-to-cart-button"
