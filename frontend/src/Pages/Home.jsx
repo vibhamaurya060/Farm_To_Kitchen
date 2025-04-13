@@ -76,7 +76,7 @@ const Home = () => {
                                     className="hero-image"
                                 />
                                 <div className="hero-overlay">
-                                    <h1 className="hero-title">Welcome to Organic Farm Market</h1>
+                                    <h1 className="hero-title">Welcome to Organic FarmNet</h1>
                                     <p className="hero-subtitle">Fresh, Organic & Locally Sourced Products</p>
                                     <button className="shop-now-button"  onClick={() => navigate(`/products`)} >SHOP NOW</button>
                                 </div>
@@ -161,7 +161,7 @@ const Home = () => {
                                 </div>
                                 <div className="product-info">
                                     <h3 className="product-name">{product.name}</h3>
-                                    <p className="product-price">${product.price.toFixed(2)}</p>
+                                    <p className="product-price">${product.price}</p>
                                     <div className="product-buttons">
                                         <button
                                             className="view-details-button"
