@@ -128,18 +128,18 @@
 
 /* View Button */
 .view-btn {
-    background-color: #007bff;
+    background-color: #a763ff;
     color: white;
     margin-right: 10px;
 }
 
 .view-btn:hover {
-    background-color: #0056b3;
+    background-color: #8950d3;
 }
 
 /* Checkout Button */
 .checkout-btn {
-    background-color: #27ae60;
+    background-color: #83aca9;
     color: white;
     padding: 14px 20px;
     font-size: 17px;
