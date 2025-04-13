@@ -1,6 +1,7 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const userModel = require("../models/user.model");
+const { userModel, blacklistModel, } = require("../models/user.model");
+
 
 
 
@@ -49,7 +50,7 @@ const logoutUser= async(req, res)=>{
     }
 
     const expiresAt=new Date(decoded.exp * 1000);
-    await userModel.blacklistModel.create({token, expiresAt});
+    await blacklistModel.create({token, expiresAt});
     res.status(200).json({message: "Logout successful. Token has been invalidated."});
 }
 
@@ -58,6 +59,7 @@ const getUsers=async(req, res)=>{
         const users=await userModel.find();
         res.status(200).json({users: users})
     } catch (error) {
+        console.log(error);
         res.status(500).json({message: "Server error"})
     }
 }
