@@ -161,7 +161,7 @@ const Home = () => {
                                 </div>
                                 <div className="product-info">
                                     <h3 className="product-name">{product.name}</h3>
-                                    <p>{product.category}</p>
+                                    <p style={{margin: "5px"}}>{product.category}</p>
                                     <div className="product-buttons">
                                         <button
                                             className="view-details-button"
