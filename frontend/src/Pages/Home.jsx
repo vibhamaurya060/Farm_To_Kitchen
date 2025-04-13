@@ -27,7 +27,7 @@ const Home = () => {
     const [loading, setLoading] = useState(true);
     const { addToCart } = useCart();
     const navigate = useNavigate();
-
+  
 
     // Fetch products from API
     useEffect(() => {
@@ -78,7 +78,7 @@ const Home = () => {
                                 <div className="hero-overlay">
                                     <h1 className="hero-title">Welcome to Organic FarmNet</h1>
                                     <p className="hero-subtitle">Fresh, Organic & Locally Sourced Products</p>
-                                    <button className="shop-now-button" onClick={() => navigate(`/products`)} >SHOP NOW</button>
+                                    <button className="shop-now-button"  onClick={() => navigate(`/products`)} >SHOP NOW</button>
                                 </div>
                             </div>
                         </SwiperSlide>
@@ -155,15 +155,13 @@ const Home = () => {
                                         src={product.images[0]}
                                         alt={product.name}
                                         className="product-image"
-                                    // style={{ width: "100%", height: "45vh" }}
+                                       // style={{ width: "100%", height: "45vh" }}
 
                                     />
                                 </div>
                                 <div className="product-info">
                                     <h3 className="product-name">{product.name}</h3>
-                                    <p className="product-price">
-                                        {product.price ? `$${product.price.toFixed(2)}` : "Price not available"}
-                                    </p>
+                                    <p className="product-price">{`$ ${product.price.toFixed(2)}`}</p>
                                     <div className="product-buttons">
                                         <button
                                             className="view-details-button"
@@ -199,10 +197,10 @@ const Home = () => {
                     {/* Text Content */}
                     <div className="about-text">
                         <p>
-                            <strong style={{ fontSize: "25px" }}>FarmNet</strong> is dedicated to connecting farmers with fresh, <br /> organic
-                            produce buyers, ensuring a sustainable and <br /> eco-friendly
-                            farming experience. Our platform bridges the gap between
-                            rural farms and urban consumers, making healthy food
+                            <strong style={{fontSize:"25px"}}>FarmNet</strong> is dedicated to connecting farmers with fresh, <br /> organic 
+                            produce buyers, ensuring a sustainable and <br /> eco-friendly 
+                            farming experience. Our platform bridges the gap between 
+                            rural farms and urban consumers, making healthy food  
                             accessible to everyone.
                         </p>
                     </div>
