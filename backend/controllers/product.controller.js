@@ -19,7 +19,7 @@ const createProduct = async (req, res) => {
         res.status(500).json({ message: "Error creating product", error: error.message });
     }
 };
-
+ 
 // Get all products
 const getAllProducts = async (req, res) => {
     try {
@@ -44,7 +44,7 @@ const getProductById = async (req, res) => {
 const getProductByCategory = async (req, res) => {
     try {
       const category = req.query.category;
-      console.log("Category received from request:", category); // Debugging
+      console.log("Category received from request:", category);
   
       if (!category) {
         return res.status(400).json({ error: "Category is required" });
@@ -52,10 +52,10 @@ const getProductByCategory = async (req, res) => {
   
       // Fetch products
       const products = await productModel.find({ category: String(category) });
-      // ✅ Correct
+      //
 
   
-      console.log("Products found:", products); // Debugging
+      console.log("Products found:", products); 
       res.json(products);
     } catch (error) {
       console.error("Error fetching product:", error);
@@ -63,7 +63,7 @@ const getProductByCategory = async (req, res) => {
     }
   }; 
 
-   
+
   
 // Update product
 const updateProduct = async (req, res) => {
